@@ -171,3 +171,5 @@ In the resulting phylogenetic tree, sampled ancestors appear as leaves with 0 br
 # Running the code
 
 We wrapped the code to generate BD trees in a python module (`pysimBD`). To compile the code into a module, open the terminal and move to this folder, then type `make`. Please make sure to install `pybind11` before that and modify the `makefile` variables `CXX`, `CXXFLAGS`, `INC` and `EXT` to match the specifics of your system.
+
+There is also a jupyter notebook that shows how to simulate a tree and plot it.
