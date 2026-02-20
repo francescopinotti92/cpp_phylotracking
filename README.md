@@ -52,8 +52,7 @@ If you sample a lineage at time `time` you need to mark it as sampled by calling
 ```cpp
 tree_mngr->sampleExtantLineage( lng_ID, time );
 ```
-
-### Collecting the tree
+## Collecting the tree
 
 The next instructions show how to get a phylogenetic tree from the transmission chains. Importantly, the tips of the tree correspond to sampled lineages.
 
