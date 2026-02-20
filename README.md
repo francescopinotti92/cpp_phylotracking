@@ -8,7 +8,7 @@ The tracking algorithm uses a dynamical pruning strategy to reduce memory requir
 
 `tree.hpp` currently supports newick and New Hampshire X (NHX) tree formats. Both newick and NHX trees appears as strings of text containing ancestral relationships, tips/internal node names and branch lengths. The NHX format adds the possibility to include additional node metadata.
 
-## How to use?
+## How to use?
 
 We exemplify the use of `tree.hpp` in the case of Birth & Death (BD) model. The latter simulates a branching process where individual lineages reproduce with rate $\beta$ and die with rate $\alpha$. Dying lineages are sampled with probability $\rho$ and will therefore appear in the final tree.
 
@@ -151,6 +151,7 @@ struct CumstomData {
     int X;
 } ;
 ```
+
 We can then overload the `<<` operator or the `data2string` function:
 
 ```cpp
@@ -161,14 +162,13 @@ std::string data2string( PhyloNode<CustomID,CustomData>* node ) {
     
 }
 ```
-
-## A note on sampled ancestors
+## A note on sampled ancestors
 
 In some applications it might happen that we record sampled ancestors. These are internal nodes that are also leaves, and might appear if, e.g., we sample an infection but do not remove it, and subsequently sample some of its descendants (This can not happen in the BD example since lineages are sampled only upon removal).
 
 In the resulting phylogenetic tree, sampled ancestors appear as leaves with 0 branch length. This structure preserves the binary tree structure. However, note that other software may represent sampled ancestor differently, e.g. as additional internal nodes with a single child.
 
-# Running the code
+## Running the code
 
 We wrapped the code to generate BD trees in a python module (`pysimBD`). To compile the code into a module, open the terminal and move to this folder, then type `make`. Please make sure to install `pybind11` before that and modify the `makefile` variables `CXX`, `CXXFLAGS`, `INC` and `EXT` to match the specifics of your system.
 
